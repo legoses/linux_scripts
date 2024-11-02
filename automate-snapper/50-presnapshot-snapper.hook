@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Pre-upgrade snapper snapshot
+When = PreTransaction
+#Exec = /opt/snapper-snaps4bhot/mk-snapshot.sh --pre
+Exec =/usr/bin/bash -c "/usr/bin/snapper -c config create -t pre -p -c number"

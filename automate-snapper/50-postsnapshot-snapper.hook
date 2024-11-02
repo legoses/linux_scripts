@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Pre-upgrade snapper snapshot
+When = PostTransaction
+Exec = /usr/bin/bash -c "/usr/bin/snapper -c config create -t post --pre-number $(snapper -c config list | grep pre | tail -n 1 | awk '{print $1}') -c number && /opt/snapper-snapshot/snapshotboot.sh"
